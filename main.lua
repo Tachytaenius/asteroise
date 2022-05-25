@@ -26,7 +26,6 @@ local function tryWriteHighscore()
 end
 
 function love.load()
-	love.graphics.setLineStyle("rough")
 	gamestate = {
 		type = "title",
 		highscore = readHighscore()
