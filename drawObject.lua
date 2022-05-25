@@ -1,7 +1,7 @@
 local drawObject = {}
 
 function drawObject.ship(pos, angle, scale)
-	love.graphics.push()
+	love.graphics.push("all")
 	love.graphics.translate(pos.x, pos.y)
 	love.graphics.rotate(angle)
 	love.graphics.scale(scale)

@@ -26,6 +26,7 @@ local function tryWriteHighscore()
 end
 
 function love.load()
+	love.graphics.setLineStyle("rough")
 	gamestate = {
 		type = "title",
 		highscore = readHighscore()
@@ -158,16 +159,16 @@ function love.update(dt)
 					local pos
 					if edgeDecider < 0.25 then
 						-- top
-						pos = vec2(i * consts.gameWidth, 0)
+						pos = vec2(i * consts.gameWidth, -consts.newAsteroidRadius)
 					elseif edgeDecider < 0.5 then
 						-- bottom
-						pos = vec2(i * consts.gameWidth, consts.gameHeight)
+						pos = vec2(i * consts.gameWidth, consts.gameHeight + consts.newAsteroidRadius)
 					elseif edgeDecider < 0.75 then
 						-- left
-						pos = vec2(0, i * consts.gameHeight)
+						pos = vec2(0, i * consts.gameHeight - consts.newAsteroidRadius)
 					else
 						-- right
-						pos = vec2(consts.gameWidth, i * consts.gameHeight)
+						pos = vec2(consts.gameWidth, i * consts.gameHeight + consts.newAsteroidRadius)
 					end
 					gamestate.asteroids:add({
 						pos = pos, vel = vec2.normalise(gamestate.player.pos - pos) * consts.newAsteroidSpeed,
